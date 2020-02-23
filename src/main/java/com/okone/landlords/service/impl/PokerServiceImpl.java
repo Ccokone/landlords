@@ -15,6 +15,11 @@ public class PokerServiceImpl implements PokerService {
 
     @Override
     public boolean valid(List<Poker> list) {
+        if (list == null || list.isEmpty()) {
+            return false;
+        }
+        Collections.sort(list);
+
         PokerPattern pattern = pokerPatternMatcher.match(list);
         return pattern != null;
     }
